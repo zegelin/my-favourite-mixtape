@@ -51,19 +51,42 @@ thead, th {
     text-align: right;
 }
 
-.track > * {
-    //display: inline-block;
+table {
+    width: 100%;
 }
 
-/* strong.explicit {
-    position: absolute;
-    visibility: hidden;
+#playlists #search-message {
+    margin: 0 1em;
+    font-size: 80%;
+
+    display: none;
 }
 
-strong.explicit:after {
-    visibility: visible;
-    content: "E"
-} */</style>
+#playlists.search-results #search-message {
+    display: revert;
+}
+
+#playlists.search-results .playlist-header,
+#playlists.search-results .playlist-contents,
+#playlists.search-results .playlist-contents .track {
+    display: none;
+}
+
+#playlists.search-results .playlist-header:has(+ .playlist-contents .search-match) {
+    display: revert;
+
+    border: 1px solid red;
+
+}
+
+#playlists.search-results .playlist-contents:has(.search-match),
+#playlists.search-results .playlist-contents .track:has(.search-match) {
+    display: revert;
+}
+
+.search-match {
+    background:rgb(224, 224, 253);
+}</style>
 </head>
 
 <body>

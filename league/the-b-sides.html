@@ -50,19 +50,42 @@ thead, th {
     text-align: right;
 }
 
-.track > * {
-    //display: inline-block;
+table {
+    width: 100%;
 }
 
-/* strong.explicit {
-    position: absolute;
-    visibility: hidden;
+#playlists #search-message {
+    margin: 0 1em;
+    font-size: 80%;
+
+    display: none;
 }
 
-strong.explicit:after {
-    visibility: visible;
-    content: "E"
-} */</style>
+#playlists.search-results #search-message {
+    display: revert;
+}
+
+#playlists.search-results .playlist-header,
+#playlists.search-results .playlist-contents,
+#playlists.search-results .playlist-contents .track {
+    display: none;
+}
+
+#playlists.search-results .playlist-header:has(+ .playlist-contents .search-match) {
+    display: revert;
+
+    border: 1px solid red;
+
+}
+
+#playlists.search-results .playlist-contents:has(.search-match),
+#playlists.search-results .playlist-contents .track:has(.search-match) {
+    display: revert;
+}
+
+.search-match {
+    background:rgb(224, 224, 253);
+}</style>
 
 </head>
 
@@ -84,13 +107,22 @@ strong.explicit:after {
             <th>Album</th>
             <th>Artists</th>
         </tr>
-    </thead><tr><td colspan="5">Nobody has re-submitted a song yet. It's anyone's game!</td></tr></table>
+    </thead><tr class="message"><td colspan="5"><small>Nobody has re-submitted a song yet. It's anyone's game!</small></td></tr></table>
 
   <hr />
   
 
-  <table>
-    <thead>
+  <table id="playlists">
+    <thead class="global-header">
+        <tr>
+            <td colspan="5">
+                <input id="search" type="search" placeholder="Filter by a song/album/artist…" size="30" incremental />
+                <span id="search-message"></span>
+            </td>
+        </tr>
+    </thead>
+
+    <thead class="global-header">
         <tr>
             <th class="track-number">#</th>
             <th>Track</th>
@@ -98,513 +130,569 @@ strong.explicit:after {
             <th>Album</th>
             <th>Artists</th>
         </tr>
-    </thead><thead>
-    <tr>
-    <th colspan="5" class="playlist-title">
-        <h3><small>Round 5:</small> <a href="https://open.spotify.com/playlist/05DiJpiSe4Mi3HL9naqFxH">Planes, trains and automobiles</a></h3>
-    </th>
-    </tr>
-    </thead><tr class="track">
-        <td class="track-number">1</td>
+    </thead><thead class="playlist-header">
+        <tr>
+            <th colspan="5" class="playlist-title">
+                <h3><small>Round 5:</small> <a href="https://open.spotify.com/playlist/05DiJpiSe4Mi3HL9naqFxH">Planes, trains and automobiles</a></h3>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody class="playlist-contents"><tr class="track">
+            <td class="track-number">1</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/0vJlZS5zLMhRQ6xo9vmAlB">Don&#39;t Pay The Ferryman</a></td>
     
     <td class="track-duration" title="Duration">03:48</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/5VktTuASROJmXMUE9LHdXz">The Getaway</a> <small>(1982-12-19)</small></td>
-    <td><a href="https://open.spotify.com/artist/2RpHsROrX075xfIwHn6B2U">Chris de Burgh</a></td></tr><tr class="track">
-        <td class="track-number">2</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/2RpHsROrX075xfIwHn6B2U">Chris de Burgh</a></td></tr><tr class="track">
+            <td class="track-number">2</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/1MntHPLU1T7a9W4tojbg8g">Mercedes Benz</a></td>
     
     <td class="track-duration" title="Duration">01:47</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/3j7nicLAWXM0Fb08q9XGyf">Pearl (Legacy Edition)</a> <small>(1971-01-11)</small></td>
-    <td><a href="https://open.spotify.com/artist/4NgfOZCL9Ml67xzM0xzIvC">Janis Joplin</a></td></tr><tr class="track">
-        <td class="track-number">3</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/4NgfOZCL9Ml67xzM0xzIvC">Janis Joplin</a></td></tr><tr class="track">
+            <td class="track-number">3</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/1rSNjTJf2AsXnlj1I9a1fh">Six Months in a Leaky Boat</a></td>
     
     <td class="track-duration" title="Duration">04:21</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/0VzEBmxy3fwUztnKnwyGvk">Time And Tide</a> <small>(1982)</small></td>
-    <td><a href="https://open.spotify.com/artist/0Upmz8QvuLAkKAfRlJYWTL">Split Enz</a></td></tr><tr class="track">
-        <td class="track-number">4</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/0Upmz8QvuLAkKAfRlJYWTL">Split Enz</a></td></tr><tr class="track">
+            <td class="track-number">4</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/1tdltVUBkiBCW1C3yB4zyD">Yellow Submarine</a></td>
     
     <td class="track-duration" title="Duration">02:39</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/0XRZpF083HqgygM0v1hQyE">Yellow Submarine Songtrack</a> <small>(2014-01-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/3WrFJ7ztbogyGnTHbHJFl2">The Beatles</a></td></tr><tr class="track">
-        <td class="track-number">5</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/3WrFJ7ztbogyGnTHbHJFl2">The Beatles</a></td></tr><tr class="track">
+            <td class="track-number">5</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/23tktWr4FmFoJ6xEGqj3u2">Another One Rides the Bus</a></td>
     
     <td class="track-duration" title="Duration">02:38</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/1gnhuWdl30liEUM2jy9lxl">&#34;Weird Al&#34; Yankovic</a> <small>(1983)</small></td>
-    <td><a href="https://open.spotify.com/artist/1bDWGdIC2hardyt55nlQgG">&#34;Weird Al&#34; Yankovic</a></td></tr><tr class="track">
-        <td class="track-number">6</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/1bDWGdIC2hardyt55nlQgG">&#34;Weird Al&#34; Yankovic</a></td></tr><tr class="track">
+            <td class="track-number">6</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/2RV0a2exQHXWwKW7zyVIoj">The Car Song</a></td>
     
     <td class="track-duration" title="Duration">04:19</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/3wzXwICSZrUJd5D8gmdDnh">Two Shoes</a> <small>(2005-04-19)</small></td>
-    <td><a href="https://open.spotify.com/artist/023YMawCG3OvACmRjWxLWC">The Cat Empire</a></td></tr><tr class="track">
-        <td class="track-number">7</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/023YMawCG3OvACmRjWxLWC">The Cat Empire</a></td></tr><tr class="track">
+            <td class="track-number">7</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/2zI3bUYn2pcF27of6i2oqK">Jet Airliner</a></td>
     
     <td class="track-duration" title="Duration">03:35</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/5hLazW5a3Ysgy3dncwGgUn">Greatest Hits 1974-78</a> <small>(1978-01-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/6QtGlUje9TIkLrgPZrESuk">Steve Miller Band</a></td></tr><tr class="track">
-        <td class="track-number">8</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/6QtGlUje9TIkLrgPZrESuk">Steve Miller Band</a></td></tr><tr class="track">
+            <td class="track-number">8</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/4WDCh3QFVWHUsSKjqbUwdA">Starships</a></td>
     
     <td class="track-duration" title="Duration">03:30</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/07aahkgYoHTTTV0RYKkMip">Pink Friday ... Roman Reloaded (Deluxe Edition)</a> <small>(2012-04-03)</small></td>
-    <td><a href="https://open.spotify.com/artist/0hCNtLu0JehylgoiP8L4Gh">Nicki Minaj</a></td></tr><tr class="track">
-        <td class="track-number">9</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/0hCNtLu0JehylgoiP8L4Gh">Nicki Minaj</a></td></tr><tr class="track">
+            <td class="track-number">9</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/5AyL2kgLtTWEu3qO3B9SqK">Like A G6</a></td>
     
     <td class="track-duration" title="Duration">03:36</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/4axgysRjIB7ToC0DA7uxXC">Free Wired</a> <small>(2010-01-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/7Ip2u3e5Nv6fFb5xyIHxEE">DEV</a>, <a href="https://open.spotify.com/artist/698hF4vcwHwPy8ltmXermq">Far East Movement</a>, <a href="https://open.spotify.com/artist/7C64wNX3howEFZjAYRKsfP">The Cataracs</a></td></tr><tr class="track">
-        <td class="track-number">10</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/7Ip2u3e5Nv6fFb5xyIHxEE">DEV</a>, <a href="https://open.spotify.com/artist/698hF4vcwHwPy8ltmXermq">Far East Movement</a>, <a href="https://open.spotify.com/artist/7C64wNX3howEFZjAYRKsfP">The Cataracs</a></td></tr><tr class="track">
+            <td class="track-number">10</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/5hnyJvgoWiQUYZttV4wXy6">Chasing Cars</a></td>
     
     <td class="track-duration" title="Duration">04:27</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/3k7bXPw2u0C0SBKPMsgMS3">Eyes Open</a> <small>(2006-01-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/3rIZMv9rysU7JkLzEaC5Jp">Snow Patrol</a></td></tr><tr class="track">
-        <td class="track-number">11</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/3rIZMv9rysU7JkLzEaC5Jp">Snow Patrol</a></td></tr><tr class="track">
+            <td class="track-number">11</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/5z6a02FGoVsXTrJ4GiVNxE">The Horses</a></td>
     
     <td class="track-duration" title="Duration">04:16</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/6Zv9GWVeSi7lqYGxxhawOq">Rise</a> <small>(1990-11-23)</small></td>
-    <td><a href="https://open.spotify.com/artist/4t52ndk0OkAxtb4vMDLPhe">Daryl Braithwaite</a></td></tr><tr class="track">
-        <td class="track-number">12</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/4t52ndk0OkAxtb4vMDLPhe">Daryl Braithwaite</a></td></tr><tr class="track">
+            <td class="track-number">12</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/63dcLsFoDziUX6eggW5l0w">Dune Buggy</a></td>
     
     <td class="track-duration" title="Duration">02:44</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/7qh8188T5LB7bdCBlk6SO1">The Presidents of The United States of America: Ten Year Super Bonus Special Anniversary Edition</a> <small>(1995-01-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/1lZvg4fNAqHoj6I9N8naBM">The Presidents Of The United States Of America</a></td></tr><tr class="track">
-        <td class="track-number">13</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/1lZvg4fNAqHoj6I9N8naBM">The Presidents Of The United States Of America</a></td></tr><tr class="track">
+            <td class="track-number">13</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/6lV2MSQmRIkycDScNtrBXO">Airplanes (feat. Hayley Williams of Paramore)</a> <strong class="explicit" title="Explicit">🅴</strong></td>
     
     <td class="track-duration" title="Duration">03:00</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/7apLPYT8szV1IqTxyVSy5P">B.o.B Presents: The Adventures of Bobby Ray</a> <small>(2010-04-27)</small></td>
-    <td><a href="https://open.spotify.com/artist/5ndkK3dpZLKtBklKjxNQwT">B.o.B</a>, <a href="https://open.spotify.com/artist/6Rx1JKzBrSzoKQtmbVmBnM">Hayley Williams</a></td></tr><tr class="track">
-        <td class="track-number">14</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/5ndkK3dpZLKtBklKjxNQwT">B.o.B</a>, <a href="https://open.spotify.com/artist/6Rx1JKzBrSzoKQtmbVmBnM">Hayley Williams</a></td></tr><tr class="track">
+            <td class="track-number">14</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/7pQOXNPLCi0Pv5H4mPxUJf">Buses and Trains - Radio Edit</a></td>
     
     <td class="track-duration" title="Duration">03:41</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/2OXfToevYybLCxNmm6bap7">Waiting For The Day</a> <small>(1998)</small></td>
-    <td><a href="https://open.spotify.com/artist/4KQNF34GIZZWL10tS3XNTk">Bachelor Girl</a></td></tr><thead>
-    <tr>
-    <th colspan="5" class="playlist-title">
-        <h3><small>Round 4:</small> <a href="https://open.spotify.com/playlist/68P4fHvqMVBabYqY4TZvV5">Music league &#38; chill </a></h3>
-    </th>
-    </tr>
-    </thead><tr class="track">
-        <td class="track-number">1</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/4KQNF34GIZZWL10tS3XNTk">Bachelor Girl</a></td></tr></tbody><thead class="playlist-header">
+        <tr>
+            <th colspan="5" class="playlist-title">
+                <h3><small>Round 4:</small> <a href="https://open.spotify.com/playlist/68P4fHvqMVBabYqY4TZvV5">Music league &#38; chill </a></h3>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody class="playlist-contents"><tr class="track">
+            <td class="track-number">1</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/0Fyj9w0HVfjoxm9S8nGClt">Orinoco Flow</a></td>
     
     <td class="track-duration" title="Duration">04:26</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/6GWptUmmrWPABTWSed7Ow8">Themes From &#34;Calmi Cuori Appassionati&#34;</a> <small>(2001)</small></td>
-    <td><a href="https://open.spotify.com/artist/6uothxMWeLWIhsGeF7cyo4">Enya</a></td></tr><tr class="track">
-        <td class="track-number">2</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/6uothxMWeLWIhsGeF7cyo4">Enya</a></td></tr><tr class="track">
+            <td class="track-number">2</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/0mflMxspEfB0VbI1kyLiAv">Stick Season</a></td>
     
     <td class="track-duration" title="Duration">03:02</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/50ZenUP4O2Q5eCy2NRNvuz">Stick Season</a> <small>(2022-10-14)</small></td>
-    <td><a href="https://open.spotify.com/artist/2RQXRUsr4IW1f3mKyKsy4B">Noah Kahan</a></td></tr><tr class="track">
-        <td class="track-number">3</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/2RQXRUsr4IW1f3mKyKsy4B">Noah Kahan</a></td></tr><tr class="track">
+            <td class="track-number">3</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/118kolZnbJBQvbOl0D4C71">Daydream In Blue</a></td>
     
     <td class="track-duration" title="Duration">03:43</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/4qD7h4hXvmKT49wDrN2kLE">Neveroddoreven</a> <small>(2005-01-27)</small></td>
-    <td><a href="https://open.spotify.com/artist/1CcPlAmcnJjC4FnaPVzv2v">I Monster</a></td></tr><tr class="track">
-        <td class="track-number">4</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/1CcPlAmcnJjC4FnaPVzv2v">I Monster</a></td></tr><tr class="track">
+            <td class="track-number">4</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/1gVgkQFOKa8Wc1HYsJtPdH">More Than Words</a></td>
     
     <td class="track-duration" title="Duration">05:34</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/7DKHQxJTI32UyCdDdGwvRC">Extreme II - Pornograffitti</a> <small>(1990-01-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/6w7j5wQ5AI5OQYlcM15s2L">Extreme</a></td></tr><tr class="track">
-        <td class="track-number">5</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/6w7j5wQ5AI5OQYlcM15s2L">Extreme</a></td></tr><tr class="track">
+            <td class="track-number">5</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/1HFfMOxCAT4GAwaPfCdmUs">Waves - Robin Schulz Radio Edit</a></td>
     
     <td class="track-duration" title="Duration">03:28</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/29RpLEpfNr1mnrnmtbO620">Waves (Robin Schulz Radio Edit)</a> <small>(2014-02-07)</small></td>
-    <td><a href="https://open.spotify.com/artist/33W1pnW9zScZtYTnAoWnOT">Mr. Probz</a>, <a href="https://open.spotify.com/artist/3t5xRXzsuZmMDkQzgOX35S">Robin Schulz</a></td></tr><tr class="track">
-        <td class="track-number">6</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/33W1pnW9zScZtYTnAoWnOT">Mr. Probz</a>, <a href="https://open.spotify.com/artist/3t5xRXzsuZmMDkQzgOX35S">Robin Schulz</a></td></tr><tr class="track">
+            <td class="track-number">6</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/2262bWmqomIaJXwCRHr13j">Sailor Song</a></td>
     
     <td class="track-duration" title="Duration">03:31</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/68CN2LzY8MoxO2udy2C22e">Sailor Song</a> <small>(2024-07-26)</small></td>
-    <td><a href="https://open.spotify.com/artist/1iCnM8foFssWlPRLfAbIwo">Gigi Perez</a></td></tr><tr class="track">
-        <td class="track-number">7</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/1iCnM8foFssWlPRLfAbIwo">Gigi Perez</a></td></tr><tr class="track">
+            <td class="track-number">7</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/25U7raB3ZSszayTYClh4hF">Somewhere Over The Rainbow_What A Wonderful World</a></td>
     
     <td class="track-duration" title="Duration">05:08</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/0pquf1NcG9FdiypBPwICu9">Facing Future</a> <small>(1993-11-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/4ogvuDRerGhZfSf7TtzHlr">Israel Kamakawiwo&#39;ole</a></td></tr><tr class="track">
-        <td class="track-number">8</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/4ogvuDRerGhZfSf7TtzHlr">Israel Kamakawiwo&#39;ole</a></td></tr><tr class="track">
+            <td class="track-number">8</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/2Uwjr7EnHRXMgmL9SmX1Gj">Omaha</a></td>
     
     <td class="track-duration" title="Duration">03:39</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/4nKfZbCALT9H9LfedtDwnZ">August And Everything After</a> <small>(1993-01-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/0vEsuISMWAKNctLlUAhSZC">Counting Crows</a></td></tr><tr class="track">
-        <td class="track-number">9</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/0vEsuISMWAKNctLlUAhSZC">Counting Crows</a></td></tr><tr class="track">
+            <td class="track-number">9</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/2VEZx7NWsZ1D0eJ4uv5Fym">Digital Love</a></td>
     
     <td class="track-duration" title="Duration">05:01</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/2noRn2Aes5aoNVsU6iWThc">Discovery</a> <small>(2001-03-12)</small></td>
-    <td><a href="https://open.spotify.com/artist/4tZwfgrHOc3mvqYlEYSvVi">Daft Punk</a></td></tr><tr class="track">
-        <td class="track-number">10</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/4tZwfgrHOc3mvqYlEYSvVi">Daft Punk</a></td></tr><tr class="track">
+            <td class="track-number">10</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/2ZIaH69kaz55RM4Pjx6KXl">Two Thousand and Seventeen</a></td>
     
     <td class="track-duration" title="Duration">04:12</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/74r6JJ97ipO0CREXP9PMqZ">New Energy</a> <small>(2017-09-29)</small></td>
-    <td><a href="https://open.spotify.com/artist/7Eu1txygG6nJttLHbZdQOh">Four Tet</a></td></tr><tr class="track">
-        <td class="track-number">11</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/7Eu1txygG6nJttLHbZdQOh">Four Tet</a></td></tr><tr class="track">
+            <td class="track-number">11</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/41Xji81wFy3cM7ggbGczQW">Strobe</a></td>
     
     <td class="track-duration" title="Duration">10:35</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/77pjtGdQsFAJ8eV6pV2ZZz">For Lack Of A Better Name</a> <small>(2009-01-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/2CIMQHirSU0MQqyYHq0eOx">deadmau5</a></td></tr><tr class="track">
-        <td class="track-number">12</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/2CIMQHirSU0MQqyYHq0eOx">deadmau5</a></td></tr><tr class="track">
+            <td class="track-number">12</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/5QO79kh1waicV47BqGRL3g">Save Your Tears</a> <strong class="explicit" title="Explicit">🅴</strong></td>
     
     <td class="track-duration" title="Duration">03:35</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/4yP0hdKOZPNshxUOjY0cZj">After Hours</a> <small>(2020-03-20)</small></td>
-    <td><a href="https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ">The Weeknd</a></td></tr><tr class="track">
-        <td class="track-number">13</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ">The Weeknd</a></td></tr><tr class="track">
+            <td class="track-number">13</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/5SJ7mZ4HZWbhFcHpBvHU55">6 Underground</a></td>
     
     <td class="track-duration" title="Duration">03:48</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/4CqepH0gmnNKTgENheRgT7">Becoming X</a> <small>(1996-08-18)</small></td>
-    <td><a href="https://open.spotify.com/artist/1EJWNhiYbOyeUHbsS7Kp1P">Sneaker Pimps</a></td></tr><thead>
-    <tr>
-    <th colspan="5" class="playlist-title">
-        <h3><small>Round 3:</small> <a href="https://open.spotify.com/playlist/6vkxF7Y6LJZZR9qaXWHyKf">Loud and proud 🏳️‍🌈🏳️‍🌈🏳️‍🌈</a></h3>
-    </th>
-    </tr>
-    </thead><tr class="track">
-        <td class="track-number">1</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/1EJWNhiYbOyeUHbsS7Kp1P">Sneaker Pimps</a></td></tr></tbody><thead class="playlist-header">
+        <tr>
+            <th colspan="5" class="playlist-title">
+                <h3><small>Round 3:</small> <a href="https://open.spotify.com/playlist/6vkxF7Y6LJZZR9qaXWHyKf">Loud and proud 🏳️‍🌈🏳️‍🌈🏳️‍🌈</a></h3>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody class="playlist-contents"><tr class="track">
+            <td class="track-number">1</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/01uqI4H13Gsd8Lyl1EYd8H">Same Love (feat. Mary Lambert)</a></td>
     
     <td class="track-duration" title="Duration">05:18</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/76FXHQhTuT4QMIxfL09gX8">The Heist</a> <small>(2012-10-09)</small></td>
-    <td><a href="https://open.spotify.com/artist/3JhNCzhSMTxs9WLGJJxWOY">Macklemore</a>, <a href="https://open.spotify.com/artist/6WLvgbfYXQPO396oJEYCsi">Macklemore &#38; Ryan Lewis</a>, <a href="https://open.spotify.com/artist/5Z2NUZiY3FA00HKu5WTMhA">Mary Lambert</a>, <a href="https://open.spotify.com/artist/4myTppRgh0rojLxx8RycOp">Ryan Lewis</a></td></tr><tr class="track">
-        <td class="track-number">2</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/3JhNCzhSMTxs9WLGJJxWOY">Macklemore</a>, <a href="https://open.spotify.com/artist/6WLvgbfYXQPO396oJEYCsi">Macklemore &#38; Ryan Lewis</a>, <a href="https://open.spotify.com/artist/5Z2NUZiY3FA00HKu5WTMhA">Mary Lambert</a>, <a href="https://open.spotify.com/artist/4myTppRgh0rojLxx8RycOp">Ryan Lewis</a></td></tr><tr class="track">
+            <td class="track-number">2</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/0aOluBqXYd0rFSCsgDyAWX">Take Me to Church</a></td>
     
     <td class="track-duration" title="Duration">04:01</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/04E0aLUdCHnhnnYrDDvcHq">Hozier</a> <small>(2014-10-07)</small></td>
-    <td><a href="https://open.spotify.com/artist/2FXC3k01G6Gw61bmprjgqS">Hozier</a></td></tr><tr class="track">
-        <td class="track-number">3</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/2FXC3k01G6Gw61bmprjgqS">Hozier</a></td></tr><tr class="track">
+            <td class="track-number">3</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/1jDJFeK9x3OZboIAHsY9k2">I&#39;m Still Standing</a></td>
     
     <td class="track-duration" title="Duration">03:03</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/0OmYuz9hwn1XoqmDaU0yJ7">Too Low For Zero</a> <small>(1983-05-30)</small></td>
-    <td><a href="https://open.spotify.com/artist/3PhoLpVuITZKcymswpck5b">Elton John</a></td></tr><tr class="track">
-        <td class="track-number">4</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/3PhoLpVuITZKcymswpck5b">Elton John</a></td></tr><tr class="track">
+            <td class="track-number">4</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/1k2pQc5i348DCHwbn5KTdc">Pink Pony Club</a></td>
     
     <td class="track-duration" title="Duration">04:18</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/0EiI8ylL0FmWWpgHVTsZjZ">The Rise and Fall of a Midwest Princess</a> <small>(2023-09-22)</small></td>
-    <td><a href="https://open.spotify.com/artist/7GlBOeep6PqTfFi59PTUUN">Chappell Roan</a></td></tr><tr class="track">
-        <td class="track-number">5</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/7GlBOeep6PqTfFi59PTUUN">Chappell Roan</a></td></tr><tr class="track">
+            <td class="track-number">5</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/1mXuMM6zjPgjL4asbBsgnt">Firework</a></td>
     
     <td class="track-duration" title="Duration">03:47</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/06SY6Ke6mXzZHhURLVU57R">Teenage Dream</a> <small>(2010-08-24)</small></td>
-    <td><a href="https://open.spotify.com/artist/6jJ0s89eD6GaHleKKya26X">Katy Perry</a></td></tr><tr class="track">
-        <td class="track-number">6</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/6jJ0s89eD6GaHleKKya26X">Katy Perry</a></td></tr><tr class="track">
+            <td class="track-number">6</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/1n7xFAY4xoPeqRvrkzAtsw">Good Old-Fashioned Lover Boy - Remastered 2011</a></td>
     
     <td class="track-duration" title="Duration">02:53</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/4KZGe18wZJbXL6JLW4KyLc">A Day At The Races (Deluxe Edition 2011 Remaster)</a> <small>(1976-12-10)</small></td>
-    <td><a href="https://open.spotify.com/artist/1dfeR4HaWDbWqFHLkxsg1d">Queen</a></td></tr><tr class="track">
-        <td class="track-number">7</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/1dfeR4HaWDbWqFHLkxsg1d">Queen</a></td></tr><tr class="track">
+            <td class="track-number">7</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/2IvetNzSZMH5gwjInoyr18">It&#39;s Raining Men</a></td>
     
     <td class="track-duration" title="Duration">05:25</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/04tDE69ZArhHkFaZzRNOrt">Success</a> <small>(1982)</small></td>
-    <td><a href="https://open.spotify.com/artist/19xz1vcuKNjniGEftTOSSH">The Weather Girls</a></td></tr><tr class="track">
-        <td class="track-number">8</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/19xz1vcuKNjniGEftTOSSH">The Weather Girls</a></td></tr><tr class="track">
+            <td class="track-number">8</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/30XU4suKzCeoCK9YFzdufg">Born This Way</a></td>
     
     <td class="track-duration" title="Duration">04:20</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/6LY3AerY6KNGOPsNPL63Kk">Born This Way (International Special Edition Version)</a> <small>(2011-05-23)</small></td>
-    <td><a href="https://open.spotify.com/artist/1HY2Jd0NmPuamShAr6KMms">Lady Gaga</a></td></tr><tr class="track">
-        <td class="track-number">9</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/1HY2Jd0NmPuamShAr6KMms">Lady Gaga</a></td></tr><tr class="track">
+            <td class="track-number">9</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/3hZLWpBObLhpUJpPQ3Ls3z">Androgyny</a></td>
     
     <td class="track-duration" title="Duration">03:09</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/6jAuBbPS0zmRJDT5QOcy5T">Beautiful Garbage (Remastered)</a> <small>(2001)</small></td>
-    <td><a href="https://open.spotify.com/artist/6S0GHTqz5sxK5f9HtLXn9q">Garbage</a></td></tr><tr class="track">
-        <td class="track-number">10</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/6S0GHTqz5sxK5f9HtLXn9q">Garbage</a></td></tr><tr class="track">
+            <td class="track-number">10</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/3SnGymj6ijE2iuUfWxLo1q">I&#39;m Coming Out</a></td>
     
     <td class="track-duration" title="Duration">05:23</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/3zgDLoVcpVGfFbDZJf3uHI">Diana</a> <small>(1980-05-22)</small></td>
-    <td><a href="https://open.spotify.com/artist/3MdG05syQeRYPPcClLaUGl">Diana Ross</a></td></tr><tr class="track">
-        <td class="track-number">11</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/3MdG05syQeRYPPcClLaUGl">Diana Ross</a></td></tr><tr class="track">
+            <td class="track-number">11</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/46jKlwucqKdKZR0cPLE4QD">Like A Girl Does</a> <strong class="explicit" title="Explicit">🅴</strong></td>
     
     <td class="track-duration" title="Duration">02:52</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/5IktkodoE8Wr2heQRXyBfW">Like A Girl Does</a> <small>(2023-11-06)</small></td>
-    <td><a href="https://open.spotify.com/artist/006j2rer9tZJCYniu7SaWS">Peach PRC</a></td></tr><tr class="track">
-        <td class="track-number">12</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/006j2rer9tZJCYniu7SaWS">Peach PRC</a></td></tr><tr class="track">
+            <td class="track-number">12</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/4DfqGjVAPyn59Aa7n6T3eb">Let&#39;s Have A Kiki</a> <strong class="explicit" title="Explicit">🅴</strong></td>
     
     <td class="track-duration" title="Duration">03:50</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/0EXLNx8etzYYYAJsgbpbK7">Happy Pride: Feel Good Tunes</a> <small>(2019-06-07)</small></td>
-    <td><a href="https://open.spotify.com/artist/3Y10boYzeuFCJ4Qgp53w6o">Scissor Sisters</a>, <a href="https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of">Various Artists</a></td></tr><tr class="track">
-        <td class="track-number">13</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/3Y10boYzeuFCJ4Qgp53w6o">Scissor Sisters</a>, <a href="https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of">Various Artists</a></td></tr><tr class="track">
+            <td class="track-number">13</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/68YkiTIRWcXN3q11ED70iN">On a Night like This</a></td>
     
     <td class="track-duration" title="Duration">03:33</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/6vaZSsroXnO5rMcpr74QOA">Light Years</a> <small>(2000-09-25)</small></td>
-    <td><a href="https://open.spotify.com/artist/4RVnAU35WRWra6OZ3CbbMA">Kylie Minogue</a></td></tr><tr class="track">
-        <td class="track-number">14</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/4RVnAU35WRWra6OZ3CbbMA">Kylie Minogue</a></td></tr><tr class="track">
+            <td class="track-number">14</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/7H05LygiPiQQE1h88P7vIV">Equal Rights - From &#34;Popstar: Never Stop Never Stopping&#34; Soundtrack</a></td>
     
     <td class="track-duration" title="Duration">02:24</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/07fcZXkBS0y4Y80GT60PZq">Popstar: Never Stop Never Stopping</a> <small>(2016-06-03)</small></td>
-    <td><a href="https://open.spotify.com/artist/1KCSPY1glIKqW2TotWuXOR">P!nk</a>, <a href="https://open.spotify.com/artist/1f5GqyOPo0CkotzzRwviBu">The Lonely Island</a></td></tr><thead>
-    <tr>
-    <th colspan="5" class="playlist-title">
-        <h3><small>Round 2:</small> <a href="https://open.spotify.com/playlist/7fULNKbYhoY39GChbWjoJ0">That’s cool</a></h3>
-    </th>
-    </tr>
-    </thead><tr class="track">
-        <td class="track-number">1</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/1KCSPY1glIKqW2TotWuXOR">P!nk</a>, <a href="https://open.spotify.com/artist/1f5GqyOPo0CkotzzRwviBu">The Lonely Island</a></td></tr></tbody><thead class="playlist-header">
+        <tr>
+            <th colspan="5" class="playlist-title">
+                <h3><small>Round 2:</small> <a href="https://open.spotify.com/playlist/7fULNKbYhoY39GChbWjoJ0">That’s cool</a></h3>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody class="playlist-contents"><tr class="track">
+            <td class="track-number">1</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/0Ie5uiv54KgCr7P4sYDTHl">Baby It&#39;s Cold Outside (with Michael Bublé)</a></td>
     
     <td class="track-duration" title="Duration">02:46</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/0EGX5qfw6VEPOMoCUFJFHl">Holiday Wishes</a> <small>(2014-10-10)</small></td>
-    <td><a href="https://open.spotify.com/artist/73Np75Wv2tju61Eo9Zw4IR">Idina Menzel</a>, <a href="https://open.spotify.com/artist/1GxkXlMwML1oSg5eLPiAz3">Michael Bublé</a></td></tr><tr class="track">
-        <td class="track-number">2</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/73Np75Wv2tju61Eo9Zw4IR">Idina Menzel</a>, <a href="https://open.spotify.com/artist/1GxkXlMwML1oSg5eLPiAz3">Michael Bublé</a></td></tr><tr class="track">
+            <td class="track-number">2</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/125XinFPon6qOwsdhZSIWf">Hazy Shade of Winter</a></td>
     
     <td class="track-duration" title="Duration">02:46</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/5BzhBD77hoBmoJ3V9JFDBI">Xmas Hits / Top 100 Holiday Songs</a> <small>(2023-04-14)</small></td>
-    <td><a href="https://open.spotify.com/artist/28DQLiDzhsusSA10OXDvG8">Christmas Songs</a>, <a href="https://open.spotify.com/artist/51l0uqRxGaczYr4271pVIC">The Bangles</a></td></tr><tr class="track">
-        <td class="track-number">3</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/28DQLiDzhsusSA10OXDvG8">Christmas Songs</a>, <a href="https://open.spotify.com/artist/51l0uqRxGaczYr4271pVIC">The Bangles</a></td></tr><tr class="track">
+            <td class="track-number">3</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/1utX6NphyZRVzF2kI3eq42">My&#60;Dsmbr (Mickey P. Reanimation) [feat. Kelli Ali]</a></td>
     
     <td class="track-duration" title="Duration">04:18</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/2NbO8RRVTVEUjHaxUVdMDT">Reanimation</a> <small>(2002)</small></td>
-    <td><a href="https://open.spotify.com/artist/33x1juS3GMXmg2USPcriOa">Kelli Ali</a>, <a href="https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz">Linkin Park</a></td></tr><tr class="track">
-        <td class="track-number">4</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/33x1juS3GMXmg2USPcriOa">Kelli Ali</a>, <a href="https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz">Linkin Park</a></td></tr><tr class="track">
+            <td class="track-number">4</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/1ZEOIhSn6BKErV59bIgn76">California Dreamin&#39;</a></td>
     
     <td class="track-duration" title="Duration">02:40</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/6d9b6qTmzQ2WOOGB2cDCDq">All The Leaves Are Brown The Golden Era Collection</a> <small>(2001-08-28)</small></td>
-    <td><a href="https://open.spotify.com/artist/1bs7HoMkSyQwcobCpE9KpN">The Mamas &#38; The Papas</a></td></tr><tr class="track">
-        <td class="track-number">5</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/1bs7HoMkSyQwcobCpE9KpN">The Mamas &#38; The Papas</a></td></tr><tr class="track">
+            <td class="track-number">5</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/2diJVWzE0FgG6EOy4BSbzL">Early Winter</a></td>
     
     <td class="track-duration" title="Duration">04:44</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/2dhQoUl5mJz1AQXTJkXn2H">The Sweet Escape</a> <small>(2006-12-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/4yiQZ8tQPux8cPriYMWUFP">Gwen Stefani</a></td></tr><tr class="track">
-        <td class="track-number">6</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/4yiQZ8tQPux8cPriYMWUFP">Gwen Stefani</a></td></tr><tr class="track">
+            <td class="track-number">6</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/2GB8OypbvrvCee61FKx5dp">A Hazy Shade of Winter</a></td>
     
     <td class="track-duration" title="Duration">02:17</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/3bzgbgiytguTDnwzflAZr2">Bookends</a> <small>(1968-04-03)</small></td>
-    <td><a href="https://open.spotify.com/artist/70cRZdQywnSFp9pnc2WTCE">Simon &#38; Garfunkel</a></td></tr><tr class="track">
-        <td class="track-number">7</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/70cRZdQywnSFp9pnc2WTCE">Simon &#38; Garfunkel</a></td></tr><tr class="track">
+            <td class="track-number">7</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/2PpruBYCo4H7WOBJ7Q2EwM">Hey Ya!</a> <strong class="explicit" title="Explicit">🅴</strong></td>
     
     <td class="track-duration" title="Duration">03:55</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/1UsmQ3bpJTyK6ygoOOjG1r">Speakerboxxx/The Love Below</a> <small>(2003)</small></td>
-    <td><a href="https://open.spotify.com/artist/1G9G7WwrXka3Z1r7aIDjI7">Outkast</a></td></tr><tr class="track">
-        <td class="track-number">8</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/1G9G7WwrXka3Z1r7aIDjI7">Outkast</a></td></tr><tr class="track">
+            <td class="track-number">8</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/2uFaJJtFpPDc5Pa95XzTvg">Let It Snow! Let It Snow! Let It Snow!</a></td>
     
     <td class="track-duration" title="Duration">01:57</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/5I48ENiZiaZZSOpec6PdS5">A Winter Romance</a> <small>(1959-01-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/49e4v89VmlDcFCMyDv9wQ9">Dean Martin</a></td></tr><tr class="track">
-        <td class="track-number">9</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/49e4v89VmlDcFCMyDv9wQ9">Dean Martin</a></td></tr><tr class="track">
+            <td class="track-number">9</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/3iM9wFGlyR28IBZrXYZK9j">Cold as Ice - 2008 Remaster</a></td>
     
     <td class="track-duration" title="Duration">03:20</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/4VRXqPaa2ZTwC2AG364RWO">No End in Sight: The Very Best of Foreigner</a> <small>(2008-07-08)</small></td>
-    <td><a href="https://open.spotify.com/artist/6IRouO5mvvfcyxtPDKMYFN">Foreigner</a></td></tr><tr class="track">
-        <td class="track-number">10</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/6IRouO5mvvfcyxtPDKMYFN">Foreigner</a></td></tr><tr class="track">
+            <td class="track-number">10</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/3lhDuYTPN54OcYIppOZvPe">Fuck, I Hate the Cold</a> <strong class="explicit" title="Explicit">🅴</strong></td>
     
     <td class="track-duration" title="Duration">03:17</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/36xV7PL6EG1Dx9MFUqwPUk">The Wilderness - The Nomad Series, Vol.4</a> <small>(2012-03-27)</small></td>
-    <td><a href="https://open.spotify.com/artist/3CYSRCHfilgR8DSbkCMp5j">Cowboy Junkies</a></td></tr><tr class="track">
-        <td class="track-number">11</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/3CYSRCHfilgR8DSbkCMp5j">Cowboy Junkies</a></td></tr><tr class="track">
+            <td class="track-number">11</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/3qp0q5gUblhkCjtD6fZfFE">Rain</a></td>
     
     <td class="track-duration" title="Duration">03:38</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/3ugzAaAo9ThcmWF31zSNlY">Body And The Beat</a> <small>(1984)</small></td>
-    <td><a href="https://open.spotify.com/artist/622HMYOaiqowUmcd5t3b7t">Dragon</a></td></tr><tr class="track">
-        <td class="track-number">12</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/622HMYOaiqowUmcd5t3b7t">Dragon</a></td></tr><tr class="track">
+            <td class="track-number">12</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/3XVozq1aeqsJwpXrEZrDJ9">Ice Ice Baby</a></td>
     
     <td class="track-duration" title="Duration">04:14</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/20O6lfaDAoMhUj5TAvVbb6">Vanilla Ice Is Back! - Hip Hop Classics</a> <small>(2008-11-04)</small></td>
-    <td><a href="https://open.spotify.com/artist/7GXXMm3DB1VswVcuGyInUd">Vanilla Ice</a></td></tr><tr class="track">
-        <td class="track-number">13</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/7GXXMm3DB1VswVcuGyInUd">Vanilla Ice</a></td></tr><tr class="track">
+            <td class="track-number">13</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/78RIER8V6EhrqVPOBi2GYa">Here Comes the Rain Again - Remastered Version</a></td>
     
     <td class="track-duration" title="Duration">04:54</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/4pGwe5BW8GVtIP8ruoa1jB">Touch (Reissue - Deluxe Edition)</a> <small>(1983-11-14)</small></td>
-    <td><a href="https://open.spotify.com/artist/5MspMQqdVbdwP6ax3GXqum">Annie Lennox</a>, <a href="https://open.spotify.com/artist/7gcCQIlkkfbul5Mt0jBQkg">Dave Stewart</a>, <a href="https://open.spotify.com/artist/0NKDgy9j66h3DLnN8qu1bB">Eurythmics</a></td></tr><thead>
-    <tr>
-    <th colspan="5" class="playlist-title">
-        <h3><small>Round 1:</small> <a href="https://open.spotify.com/playlist/7yQYi67Vfz65JzzB4EVmYQ">Keyboard smash</a></h3>
-    </th>
-    </tr>
-    </thead><tr class="track">
-        <td class="track-number">1</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/5MspMQqdVbdwP6ax3GXqum">Annie Lennox</a>, <a href="https://open.spotify.com/artist/7gcCQIlkkfbul5Mt0jBQkg">Dave Stewart</a>, <a href="https://open.spotify.com/artist/0NKDgy9j66h3DLnN8qu1bB">Eurythmics</a></td></tr></tbody><thead class="playlist-header">
+        <tr>
+            <th colspan="5" class="playlist-title">
+                <h3><small>Round 1:</small> <a href="https://open.spotify.com/playlist/7yQYi67Vfz65JzzB4EVmYQ">Keyboard smash</a></h3>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody class="playlist-contents"><tr class="track">
+            <td class="track-number">1</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/0HQf0bd3oSZei450iKuUFR">Prisencolinensinainciusol</a></td>
     
     <td class="track-duration" title="Duration">03:49</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/5dP9R1pAhtCoZJXU3iqW4y">Celentano Hit Parade / Le Volte Che Adriano E&#39; Stato Primo</a> <small>(1983-01-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/1yq9UuPp5DIb5w6eswGbKV">Adriano Celentano</a></td></tr><tr class="track">
-        <td class="track-number">2</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/1yq9UuPp5DIb5w6eswGbKV">Adriano Celentano</a></td></tr><tr class="track">
+            <td class="track-number">2</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/0lnxrQAd9ZxbhBBe7d8FO8">MMMBop</a></td>
     
     <td class="track-duration" title="Duration">04:28</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/3StpQT9Qd87FSeWeQAdg1h">Middle Of Nowhere</a> <small>(1997-01-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/0SdiiPkr02EUdekHZJkt58">Hanson</a></td></tr><tr class="track">
-        <td class="track-number">3</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/0SdiiPkr02EUdekHZJkt58">Hanson</a></td></tr><tr class="track">
+            <td class="track-number">3</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/0ouSkB2t2fGeW60MPcvmXl">The HampsterDance Song</a></td>
     
     <td class="track-duration" title="Duration">03:32</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/7gA2nNlYpzeT9yINPK0MEo">Hampster Dance - The Album</a> <small>(2000-10-24)</small></td>
-    <td><a href="https://open.spotify.com/artist/5eI4MKl2BlybuVrLJGhEMT">Hampton The Hampster</a></td></tr><tr class="track">
-        <td class="track-number">4</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/5eI4MKl2BlybuVrLJGhEMT">Hampton The Hampster</a></td></tr><tr class="track">
+            <td class="track-number">4</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/1Je1IMUlBXcx1Fz0WE7oPT">Wannabe</a></td>
     
     <td class="track-duration" title="Duration">02:53</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/3x2jF7blR6bFHtk4MccsyJ">Spice</a> <small>(1996-01-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/0uq5PttqEjj3IH1bzwcrXF">Spice Girls</a></td></tr><tr class="track">
-        <td class="track-number">5</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/0uq5PttqEjj3IH1bzwcrXF">Spice Girls</a></td></tr><tr class="track">
+            <td class="track-number">5</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/1qPbGZqppFwLwcBC1JQ6Vr">Wonderwall</a></td>
     
     <td class="track-duration" title="Duration">04:18</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/2u30gztZTylY4RG7IvfXs8">(What&#39;s The Story) Morning Glory?</a> <small>(1995-10-02)</small></td>
-    <td><a href="https://open.spotify.com/artist/2DaxqgrOhkeH0fpeiQq2f4">Oasis</a></td></tr><tr class="track">
-        <td class="track-number">6</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/2DaxqgrOhkeH0fpeiQq2f4">Oasis</a></td></tr><tr class="track">
+            <td class="track-number">6</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/41TqRBgF4Ahyr4vGmZVk8b">In-A-Gadda-Da-Vida - Single Version</a></td>
     
     <td class="track-duration" title="Duration">02:53</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/5SRbMc6fb21BcI3eq3aF7X">Light and Heavy/The Best of...</a> <small>(2007-11-27)</small></td>
-    <td><a href="https://open.spotify.com/artist/3cdvlbCYf4WoBdy89RWkNS">Iron Butterfly</a></td></tr><tr class="track">
-        <td class="track-number">7</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/3cdvlbCYf4WoBdy89RWkNS">Iron Butterfly</a></td></tr><tr class="track">
+            <td class="track-number">7</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/44MuEHdlociG8KjhPhOVw5">Padam Padam</a></td>
     
     <td class="track-duration" title="Duration">02:46</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/4VNaEhdswqNiEMAcfSav9g">Tension (Deluxe)</a> <small>(2023-09-22)</small></td>
-    <td><a href="https://open.spotify.com/artist/4RVnAU35WRWra6OZ3CbbMA">Kylie Minogue</a></td></tr><tr class="track">
-        <td class="track-number">8</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/4RVnAU35WRWra6OZ3CbbMA">Kylie Minogue</a></td></tr><tr class="track">
+            <td class="track-number">8</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/48UPSzbZjgc449aqz8bxox">Californication</a></td>
     
     <td class="track-duration" title="Duration">05:29</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/2Y9IRtehByVkegoD7TcLfi">Californication (Deluxe Edition)</a> <small>(1999-06-08)</small></td>
-    <td><a href="https://open.spotify.com/artist/0L8ExT028jH3ddEcZwqJJ5">Red Hot Chili Peppers</a></td></tr><tr class="track">
-        <td class="track-number">9</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/0L8ExT028jH3ddEcZwqJJ5">Red Hot Chili Peppers</a></td></tr><tr class="track">
+            <td class="track-number">9</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/4GdB5M7GbwLZLouktYocFC">SpottieOttieDopaliscious</a> <strong class="explicit" title="Explicit">🅴</strong></td>
     
     <td class="track-duration" title="Duration">07:06</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/5ceB3rxgXqIRpsOvVzTG28">Aquemini</a> <small>(1998-09-29)</small></td>
-    <td><a href="https://open.spotify.com/artist/1G9G7WwrXka3Z1r7aIDjI7">Outkast</a></td></tr><tr class="track">
-        <td class="track-number">10</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/1G9G7WwrXka3Z1r7aIDjI7">Outkast</a></td></tr><tr class="track">
+            <td class="track-number">10</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/4h5KBcltGefua73AUPYps7">Izzo (H.O.V.A.)</a> <strong class="explicit" title="Explicit">🅴</strong></td>
     
     <td class="track-duration" title="Duration">04:00</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/69CmkikTHkGKdkrUZTtyWl">The Blueprint (Explicit Version)</a> <small>(2001-09-11)</small></td>
-    <td><a href="https://open.spotify.com/artist/3nFkdlSjzX9mRTtwJOzDYB">JAY-Z</a></td></tr><tr class="track">
-        <td class="track-number">11</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/3nFkdlSjzX9mRTtwJOzDYB">JAY-Z</a></td></tr><tr class="track">
+            <td class="track-number">11</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/5CyZPkmTBmq61SunRDysna">We Go Together - From “Grease”</a></td>
     
     <td class="track-duration" title="Duration">02:59</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/5n47Dui0H3pGpZSOxITmoq">Grease (The Original Motion Picture Soundtrack)</a> <small>(1978-04-04)</small></td>
-    <td><a href="https://open.spotify.com/artist/4hKkEHkaqCsyxNxXEsszVH">John Travolta</a>, <a href="https://open.spotify.com/artist/4BoRxUdrcgbbq1rxJvvhg9">Olivia Newton-John</a>, <a href="https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of">Various Artists</a></td></tr><tr class="track">
-        <td class="track-number">12</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/4hKkEHkaqCsyxNxXEsszVH">John Travolta</a>, <a href="https://open.spotify.com/artist/4BoRxUdrcgbbq1rxJvvhg9">Olivia Newton-John</a>, <a href="https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of">Various Artists</a></td></tr><tr class="track">
+            <td class="track-number">12</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/623rRTKwGmgjH6sjE9uWLh">Scatman (ski-ba-bop-ba-dop-bop)</a></td>
     
     <td class="track-duration" title="Duration">03:35</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/2MRWFajfjxfLAF3wwmdv5j">Scatman&#39;s World</a> <small>(1995-06-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/4omQQTNN7ILiMsSB2k9eqX">Scatman John</a></td></tr><tr class="track">
-        <td class="track-number">13</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/4omQQTNN7ILiMsSB2k9eqX">Scatman John</a></td></tr><tr class="track">
+            <td class="track-number">13</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/7fImDWw5bcUhRbZ0w1ny4J">Supercalifragilisticexpialidocious</a></td>
     
     <td class="track-duration" title="Duration">02:03</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/3TpEE2z8atZWn2p7MUHF0U">Mary Poppins (Original Motion Picture Soundtrack)</a> <small>(1997-01-01)</small></td>
-    <td><a href="https://open.spotify.com/artist/6XIT5sGHOtxVgqtSnMCYZ6">Dick Van Dyke</a>, <a href="https://open.spotify.com/artist/5RdqZVi36tpDPYNPw8jJbO">Julie Andrews</a>, <a href="https://open.spotify.com/artist/0sT01j0t90pOjUgS61doJw">The Pearlie Chorus</a>, <a href="https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of">Various Artists</a></td></tr><tr class="track">
-        <td class="track-number">14</td>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/6XIT5sGHOtxVgqtSnMCYZ6">Dick Van Dyke</a>, <a href="https://open.spotify.com/artist/5RdqZVi36tpDPYNPw8jJbO">Julie Andrews</a>, <a href="https://open.spotify.com/artist/0sT01j0t90pOjUgS61doJw">The Pearlie Chorus</a>, <a href="https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of">Various Artists</a></td></tr><tr class="track">
+            <td class="track-number">14</td>
     
     <td class="track-title" title="Title"><a href="https://open.spotify.com/track/7FNIEfhhBlzsZFxCwI5Nwh">A Little Less Conversation - JXL Radio Edit Remix</a></td>
     
     <td class="track-duration" title="Duration">03:33</td>
     <td class="track-album" title="Album"><a href="https://open.spotify.com/album/0QVoYzGd1p8Z3ohEaM0lsc">Elvis 30 #1 Hits</a> <small>(2002-09-24)</small></td>
-    <td><a href="https://open.spotify.com/artist/43ZHCT0cAZBISjO8DG9PnE">Elvis Presley</a>, <a href="https://open.spotify.com/artist/5svDnd8joFhbpbA3Ar0CfN">Junkie XL</a></td></tr></table>
+    <td class="track-artists" title="Artists"><a href="https://open.spotify.com/artist/43ZHCT0cAZBISjO8DG9PnE">Elvis Presley</a>, <a href="https://open.spotify.com/artist/5svDnd8joFhbpbA3Ar0CfN">Junkie XL</a></td></tr></tbody></table>
+
+
+    <script type="text/javascript">
+        const playlistsTable = document.getElementById("playlists");
+        const searchMessage = document.getElementById("search-message");
+        const cells = document.querySelectorAll("#playlists .track-title, #playlists .track-album, #playlists .track-artists");
+
+        document.getElementById("search").addEventListener("input", (e) => {
+            const searchText = e.target.value;
+
+            if (searchText === "") {
+                playlistsTable.classList.remove("search-results");
+
+                for (e of document.querySelectorAll(".search-match")) {
+                    e.classList.remove("search-match");
+                }
+
+                
+            } else {
+                const searchPattern = new RegExp(RegExp.escape(searchText), "gi");
+
+                playlistsTable.classList.add("search-results");
+
+                let resultCount = 0;
+                for (cell of cells) {
+                    let text = cell.textContent;
+                    let textStripped = text.replaceAll(/\p{Punctuation}/gu, "")
+
+                    if (searchPattern.test(text) || searchPattern.test(textStripped)) {
+                        cell.classList.add("search-match");
+                        resultCount ++;
+                    } else {
+                        cell.classList.remove("search-match");
+                    }
+                }
+
+                if (resultCount === 0) {
+                    searchMessage.innerHTML = "No matches found.";
+                } else {
+                    searchMessage.innerHTML = `Found ${resultCount} matches.`;
+                }
+            };
+        });
+
+        console.log("hi");
+    </script>
 
 </body>
 
