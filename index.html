@@ -34,7 +34,11 @@ th[scope="col"] {
     color: #fff;
 }
 
-tr:nth-of-type(even) {
+table#playlists tr:nth-of-type(even) {
+    background-color: #eee;
+}
+
+table#duplicates tbody:nth-of-type(even) {
     background-color: #eee;
 }
 
@@ -49,6 +53,10 @@ thead, th {
 
 .track-number {
     text-align: right;
+}
+
+.duplicate td.track-number {
+    background: #f99 !important;
 }
 
 table {
@@ -86,6 +94,10 @@ table {
 
 .search-match {
     background:rgb(224, 224, 253);
+}
+
+button.filter {
+    
 }</style>
 </head>
 
